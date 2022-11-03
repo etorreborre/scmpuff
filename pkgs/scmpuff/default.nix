@@ -8,7 +8,7 @@ stdenv.mkDerivation {
   sourceRoot = ".";
 
   src = fetchurl {
-    url = "https://github.com/etorreborre/scmpuff/blob/89c5d68c34d78a71e3c642a37f9ca600d7e06139/scmpuff";
+    url = "https://github.com/mroth/scmpuff/releases/download/v${version}/scmpuff_${version}_macOS_x64.tar.gz";
     sha256 = "sha256-4CkijAlenhht8tyk3nBULaBPE0GBf6DVII699/RmmWI=";
   };
 
@@ -23,7 +23,7 @@ stdenv.mkDerivation {
   dontBuild = true;
 
   installPhase = ''
-    install -m755 -D scmpuff $out/bin/scmpuff
+    install -m755 -D scmpuff_${version}_macOS_x64 $out/bin/scmpuff
   '';
 
   meta = with lib; {
